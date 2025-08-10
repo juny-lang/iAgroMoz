@@ -1,0 +1,135 @@
+{% extends "base.html" %}
+{% block 'head' %}
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f7fa;
+            padding: 40px;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        form {
+            background-color: #fff;
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 25px 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: #444;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px 12px;
+            margin-bottom: 18px;
+            border: 1.8px solid #ccc;
+            border-radius: 5px;
+            font-size: 15px;
+            transition: border-color 0.3s ease;
+        }
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="password"]:focus {
+            border-color: #4a90e2;
+            outline: none;
+            box-shadow: 0 0 5px rgba(74,144,226,0.5);
+        }
+        button {
+            width: 100%;
+            background-color: #4a90e2;
+            color: white;
+            font-size: 17px;
+            font-weight: 700;
+            padding: 12px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #357abd;
+        }
+        /* Mensagem de erro/sucesso no topo */
+        .rounded-md {
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 6px;
+            font-weight: 600;
+        }
+        .bg-green-50 {
+            background-color: #f0fdf4;
+            color: #047857;
+            border: 1px solid #047857;
+        }
+        .bg-red-50 {
+            background-color: #fef2f2;
+            color: #b91c1c;
+            border: 1px solid #b91c1c;
+        }
+    </style>
+
+{% endblock 'head' %}
+
+
+{% block 'body' %}
+
+    <h1>Cadastro</h1>
+
+   
+    {% if messages %}
+        {% for message in messages %}
+            <div class="rounded-md {{ message.tags }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+
+
+    <form action="{% url 'cadastro' %}" method="post"> {% csrf_token %}
+     
+        <label>Nome:</label><br>
+        <input type="text" name="nome" required><br><br>
+
+        <label>Apelido:</label><br>
+        <input type="text" name="apelido" required><br><br>
+
+        <label>Email:</label><br>
+        <input type="email" name="email" required><br><br>
+
+        <label>Senha:</label><br>
+        <input type="password" name="senha" required><br><br>
+
+        <label>Confirmar Senha:</label><br>
+        <input type="password" name="confirmar_senha" required><br><br>
+
+        <label>Provincia:</label><br>
+        <input type="text" name="provincia" required><br><br>
+
+        <label>Distrito:</label><br>
+        <input type="text" name="distrito" required><br><br>
+
+        <label>Telefone:</label><br>
+        <input type="number" name="telefone" required><br><br>
+
+
+
+
+
+        <button type="submit">Cadastrar</button>
+    </form>
+    <p>
+        Tem conta?
+        <a href="{% url 'login'%}"> Login</a>
+    </p> 
+
+{% endblock 'body' %}

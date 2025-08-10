@@ -1,0 +1,17 @@
+{
+  "json.schemas": [],
+
+  "editor.formatOnSave": true,
+  "python.formatting.provider": "black",
+  "files.associations": {
+    "**/templates/**/*.html": "django-html"
+  },
+
+  "emmet.includeLanguages": {
+
+    "django-html": "html"
+  },
+  "sqltools.connections": [],
+  "sqltools.useNodeRuntime": true,
+  
+}

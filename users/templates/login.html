@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block 'body' %}
+<!-- Exibir mensagens do Django -->
+    {% if messages %}
+        {% for message in messages %}
+            <div class="rounded-md {{ message.tags }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    <form action="{% url 'login' %}" method="post" > {% csrf_token %}
+
+        <label>Username:</label><br>
+        <input type="text" name="email" required><br><br>
+
+        <label>Senha:</label><br>
+        <input type="password" name="senha" required><br><br>
+
+        <button type="submit">Login</button>
+
+
+    </form>
+    <p>
+        Nao tem conta?
+        <a href="{% url 'cadastro'%}"> Cadastre-se</a>
+    </p> 
+{% endblock 'body' %}
