@@ -22,7 +22,7 @@ class CustomUserManager (BaseUserManager):
 class CustomUser (AbstractBaseUser, PermissionsMixin):
     email= models.EmailField(unique=True)
     nome= models.CharField( max_length=150, blank=True)
-    telefone=models.IntegerField (unique=True)
+    telefone=models.IntegerField (unique=True,null=True)
     apelido=models.CharField(max_length=20)
     provincia = models.CharField(max_length=20)
     distrito = models.CharField(max_length= 20 )
